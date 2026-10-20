@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Signal — a mobile focus app concept</title>
+  <desc id="desc">Two overlapping dark mobile app screens with lime green highlights, a focus timer, daily tasks, and a weekly activity chart.</desc>
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientTransform="translate(454 300) rotate(90) scale(380 550)" gradientUnits="userSpaceOnUse"><stop stop-color="#29382D"/><stop offset="1" stop-color="#151E1C"/></radialGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="250" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#566158"/><stop offset=".3" stop-color="#202A24"/><stop offset="1" stop-color="#3F4941"/></linearGradient>
+    <filter id="shadow" x="-60%" y="-30%" width="220%" height="190%"><feDropShadow dx="6" dy="24" stdDeviation="22" flood-color="#030A05" flood-opacity=".5"/></filter>
+    <pattern id="grid" width="45" height="45" patternUnits="userSpaceOnUse"><path d="M45 0H0v45" stroke="#9BAF92" stroke-opacity=".045" stroke-width=".7"/></pattern>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h900v620H0z"/>
+  <path fill="url(#grid)" d="M0 0h900v620H0z"/>
+  <circle cx="450" cy="310" r="252" stroke="#94B37C" stroke-opacity=".08"/>
+  <circle cx="450" cy="310" r="207" stroke="#94B37C" stroke-opacity=".08"/>
+  <text x="55" y="71" fill="#8B9B84" font-family="Arial, sans-serif" font-size="9" letter-spacing="2.8">LESS NOISE.</text><text x="55" y="88" fill="#8B9B84" font-family="Arial, sans-serif" font-size="9" letter-spacing="2.8">MORE SIGNAL.</text>
+  <g filter="url(#shadow)" transform="translate(434 75) rotate(10 125 245)">
+    <rect width="253" height="489" rx="37" fill="url(#phone)" stroke="#687362" stroke-width=".7"/>
+    <rect x="5" y="5" width="243" height="479" rx="33" fill="#101913"/>
+    <rect x="92" y="11" width="69" height="18" rx="9" fill="#060C08"/>
+    <text x="23" y="25" fill="#E1E7DB" font-family="Arial, sans-serif" font-size="7" font-weight="600">9:41</text><g stroke="#D8E1D2" stroke-width="1.2"><path d="M203 22v-3m3 3v-5m3 5v-7M215 18c3-3 6-3 9 0m-7 2c1-1 3-1 5 0"/><rect x="229" y="16" width="10" height="6" rx="1"/></g>
+    <text x="22" y="62" fill="#E7ECDD" font-family="Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="-.8">Your rhythm.</text><text x="22" y="80" fill="#7D8B73" font-family="Arial, sans-serif" font-size="8">Small steps. Meaningful progress.</text>
+    <rect x="21" y="100" width="211" height="145" rx="16" fill="#1E2A1E"/>
+    <text x="36" y="120" fill="#98A98B" font-family="Arial, sans-serif" font-size="7" letter-spacing="1">THIS WEEK</text><text x="36" y="149" fill="#E3EDDB" font-family="Arial, sans-serif" font-size="25" letter-spacing="-1">18<tspan fill="#809475" font-size="12">h </tspan>42<tspan fill="#809475" font-size="12">m</tspan></text>
+    <rect x="169" y="129" width="45" height="18" rx="9" fill="#32462A"/><text x="191.5" y="141" fill="#BEEC85" font-family="Arial, sans-serif" font-size="7" text-anchor="middle">↗ 24%</text>
+    <g fill="#3E5035"><rect x="38" y="193" width="15" height="29" rx="4"/><rect x="65" y="181" width="15" height="41" rx="4"/><rect x="92" y="187" width="15" height="35" rx="4"/><rect x="119" y="167" width="15" height="55" rx="4"/><rect x="146" y="178" width="15" height="44" rx="4"/><rect x="200" y="199" width="15" height="23" rx="4"/></g><rect x="173" y="159" width="15" height="63" rx="4" fill="#CEFA87"/>
+    <g fill="#7D9270" font-family="Arial, sans-serif" font-size="6" text-anchor="middle"><text x="45" y="235">M</text><text x="72" y="235">T</text><text x="99" y="235">W</text><text x="126" y="235">T</text><text x="153" y="235">F</text><text x="180" y="235" fill="#D2EEAA">S</text><text x="207" y="235">S</text></g>
+    <text x="23" y="276" fill="#D9E3CC" font-family="Arial, sans-serif" font-size="12" font-weight="600">Keep the streak alive</text><text x="23" y="294" fill="#809175" font-family="Arial, sans-serif" font-size="8">You’re building something good.</text>
+    <g><rect x="22" y="312" width="210" height="52" rx="12" fill="#1C271B"/><rect x="35" y="325" width="26" height="26" rx="8" fill="#334529"/><path d="m42 339 4 4 8-10" stroke="#D1F9A2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><text x="72" y="334" fill="#D4DECA" font-family="Arial, sans-serif" font-size="8">Morning reading</text><text x="72" y="348" fill="#788B6C" font-family="Arial, sans-serif" font-size="7">12 day streak</text><text x="215" y="341" fill="#C5ED8E" font-family="Arial, sans-serif" font-size="9" text-anchor="end">12 ↗</text></g>
+    <g><rect x="22" y="373" width="210" height="52" rx="12" fill="#1C271B"/><rect x="35" y="386" width="26" height="26" rx="8" fill="#334529"/><path d="M42 400h12m-6-6v12" stroke="#D1F9A2" stroke-width="1.5" stroke-linecap="round"/><text x="72" y="395" fill="#D4DECA" font-family="Arial, sans-serif" font-size="8">Deep work</text><text x="72" y="409" fill="#788B6C" font-family="Arial, sans-serif" font-size="7">8 day streak</text><text x="215" y="402" fill="#C5ED8E" font-family="Arial, sans-serif" font-size="9" text-anchor="end">8 ↗</text></g>
+    <g stroke="#697B60" stroke-width="1.2"><path d="m47 455 7-6 7 6v8H47ZM119 462v-6m6 6v-12m6 12v-9"/><circle cx="198" cy="454" r="4"/><path d="M191 465c0-8 14-8 14 0"/></g>
+    <rect x="92" y="472" width="69" height="3" rx="1.5" fill="#B4C2A7"/>
+  </g>
+  <g filter="url(#shadow)" transform="translate(214 45) rotate(-9 125 245)">
+    <rect width="253" height="489" rx="37" fill="url(#phone)" stroke="#687362" stroke-width=".7"/>
+    <rect x="5" y="5" width="243" height="479" rx="33" fill="#111A13"/>
+    <rect x="92" y="11" width="69" height="18" rx="9" fill="#060C08"/>
+    <text x="23" y="25" fill="#E1E7DB" font-family="Arial, sans-serif" font-size="7" font-weight="600">9:41</text><g stroke="#D8E1D2" stroke-width="1.2"><path d="M203 22v-3m3 3v-5m3 5v-7M215 18c3-3 6-3 9 0m-7 2c1-1 3-1 5 0"/><rect x="229" y="16" width="10" height="6" rx="1"/></g>
+    <g stroke="#D5F4A6" stroke-width="2" stroke-linecap="round"><path d="M25 64v-9m5 12V50m5 14V53"/></g><text x="43" y="64" fill="#ECF2E3" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="-.7">signal</text>
+    <circle cx="218" cy="59" r="13" fill="#2D3B24"/><text x="218" y="62" fill="#B9D399" font-family="Arial, sans-serif" font-size="7" text-anchor="middle">AA</text>
+    <text x="23" y="98" fill="#809075" font-family="Arial, sans-serif" font-size="7" letter-spacing="1.2">MONDAY, OCTOBER 19</text>
+    <text x="22" y="127" fill="#EAF0DF" font-family="Arial, sans-serif" font-size="25" letter-spacing="-1">Make room</text><text x="22" y="156" fill="#EAF0DF" font-family="Arial, sans-serif" font-size="25" letter-spacing="-1">for your best work.</text>
+    <rect x="21" y="175" width="211" height="181" rx="18" fill="#D1F59C"/>
+    <text x="37" y="197" fill="#536C37" font-family="Arial, sans-serif" font-size="7" letter-spacing="1">TIME TO FOCUS</text><path d="m211 190-5 5m-3-5h8v8" stroke="#536C37" stroke-width="1.1"/>
+    <circle cx="126.5" cy="263" r="48" stroke="#BADD87" stroke-width="3"/>
+    <circle cx="126.5" cy="263" r="48" stroke="#344E22" stroke-width="3" stroke-dasharray="226 76" stroke-linecap="round" transform="rotate(-90 126.5 263)"/>
+    <text x="126.5" y="268" fill="#2C441C" font-family="Arial, sans-serif" font-size="34" letter-spacing="-2" text-anchor="middle">25:00</text><text x="126.5" y="285" fill="#6B854B" font-family="Arial, sans-serif" font-size="6" letter-spacing="1" text-anchor="middle">ONE THING AT A TIME</text>
+    <rect x="69" y="322" width="115" height="22" rx="11" fill="#2B421F"/><path d="m100 329 6 4-6 4Z" fill="#D9F6AE"/><text x="113" y="336" fill="#E3F6C7" font-family="Arial, sans-serif" font-size="7">Start session</text>
+    <text x="23" y="381" fill="#DAE4CD" font-family="Arial, sans-serif" font-size="12" font-weight="600">Today’s intention</text><text x="230" y="381" fill="#839577" font-family="Arial, sans-serif" font-size="7" text-anchor="end">1 / 3 done</text>
+    <rect x="22" y="394" width="210" height="35" rx="9" fill="#202C1D"/><circle cx="39" cy="411" r="6" fill="#C9EF94"/><path d="m36 411 2 2 4-4" stroke="#415B2B" stroke-width="1"/><text x="53" y="414" fill="#849773" font-family="Arial, sans-serif" font-size="8" text-decoration="line-through">Plan the week ahead</text><text x="216" y="414" fill="#7D916C" font-family="Arial, sans-serif" font-size="7" text-anchor="end">15m</text>
+    <g stroke-width="1.2"><path d="m47 455 7-6 7 6v8H47Z" stroke="#D1F59C"/><path d="M119 462v-6m6 6v-12m6 12v-9" stroke="#697B60"/><circle cx="198" cy="454" r="4" stroke="#697B60"/><path d="M191 465c0-8 14-8 14 0" stroke="#697B60"/></g>
+    <rect x="92" y="472" width="69" height="3" rx="1.5" fill="#B4C2A7"/>
+  </g>
+  <path d="M748 507h68m-9-9 9 9-9 9" stroke="#9BB785" stroke-width="1"/>
+  <text x="748" y="541" fill="#8C9E80" font-family="Arial, sans-serif" font-size="8" letter-spacing="1.3">BUILT FOR YOUR</text><text x="748" y="556" fill="#8C9E80" font-family="Arial, sans-serif" font-size="8" letter-spacing="1.3">FLOW STATE.</text>
+</svg>

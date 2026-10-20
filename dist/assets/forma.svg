@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Forma — an architecture website concept</title>
+  <desc id="desc">An editorial architecture website with large serif Forma typography and a geometric concrete building, presented on a warm pale lavender background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="56" y1="9" x2="844" y2="620" gradientUnits="userSpaceOnUse"><stop stop-color="#E5E0E4"/><stop offset="1" stop-color="#CECAD2"/></linearGradient>
+    <linearGradient id="sky" x1="600" y1="230" x2="600" y2="555" gradientUnits="userSpaceOnUse"><stop stop-color="#D2D9D7"/><stop offset="1" stop-color="#E0DFD2"/></linearGradient>
+    <linearGradient id="face" x1="370" y1="260" x2="620" y2="529" gradientUnits="userSpaceOnUse"><stop stop-color="#D7CDBB"/><stop offset="1" stop-color="#A89D88"/></linearGradient>
+    <linearGradient id="side" x1="662" y1="300" x2="761" y2="540" gradientUnits="userSpaceOnUse"><stop stop-color="#948875"/><stop offset="1" stop-color="#BAAE98"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="28" stdDeviation="26" flood-color="#4E4357" flood-opacity=".20"/></filter>
+    <clipPath id="photo"><path d="M353 231h442v316H353z"/></clipPath>
+    <pattern id="grain" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".5" fill="#fff" fill-opacity=".09"/><circle cx="4" cy="3" r=".4" fill="#4B493E" fill-opacity=".1"/></pattern>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h900v620H0z"/>
+  <path d="m0 472 900-262v410H0Z" fill="#C5C1CA" fill-opacity=".24"/>
+  <g filter="url(#shadow)" transform="rotate(4 450 310)">
+    <rect x="75" y="65" width="750" height="494" rx="8" fill="#F7F5EE"/>
+    <path d="M83 65h734a8 8 0 0 1 8 8v21H75V73a8 8 0 0 1 8-8Z" fill="#E8E5DF"/>
+    <g fill="#C4C0B8"><circle cx="92" cy="80" r="3"/><circle cx="104" cy="80" r="3"/><circle cx="116" cy="80" r="3"/></g>
+    <text x="450" y="83" fill="#8B867D" font-family="Arial, sans-serif" font-size="6.5" text-anchor="middle">forma.architecture</text>
+    <text x="103" y="122" fill="#373B32" font-family="Georgia, serif" font-size="14" letter-spacing="-.5">f.</text>
+    <g fill="#6F7167" font-family="Arial, sans-serif" font-size="6.5"><text x="547" y="119">STUDIO</text><text x="614" y="119">SELECTED WORK</text><text x="710" y="119">JOURNAL</text><text x="773" y="119">CONTACT</text></g>
+    <path d="M103 136h692" stroke="#CFD0C4" stroke-width=".75"/>
+    <text x="97" y="220" fill="#373B32" font-family="Georgia, 'Times New Roman', serif" font-size="100" letter-spacing="-7">FORMA</text>
+    <text x="788" y="183" fill="#7B7B70" font-family="Arial, sans-serif" font-size="6.5" text-anchor="end" letter-spacing="1">ARCHITECTURE</text><text x="788" y="195" fill="#7B7B70" font-family="Arial, sans-serif" font-size="6.5" text-anchor="end" letter-spacing="1">FOR THE EVERYDAY.</text>
+    <path d="M103 231h224" stroke="#CFD0C4" stroke-width=".75"/>
+    <text x="103" y="255" fill="#838376" font-family="Arial, sans-serif" font-size="6.5" letter-spacing="1.1">SPACE. PURPOSE. POSSIBILITY.</text>
+    <text x="101" y="303" fill="#41453B" font-family="Georgia, 'Times New Roman', serif" font-size="32" letter-spacing="-1.3">Thoughtfully</text><text x="101" y="338" fill="#41453B" font-family="Georgia, 'Times New Roman', serif" font-size="32" letter-spacing="-1.3">built. Quietly</text><text x="101" y="373" fill="#41453B" font-family="Georgia, 'Times New Roman', serif" font-size="32" letter-spacing="-1.3">extraordinary.</text>
+    <g fill="#8B8B7D" font-family="Arial, sans-serif" font-size="8"><text x="103" y="406">We create spaces that feel as good as</text><text x="103" y="420">they look. Made for people. Designed</text><text x="103" y="434">to belong.</text></g>
+    <path d="M103 464h114" stroke="#6F7464" stroke-width=".75"/><text x="103" y="482" fill="#5F6757" font-family="Arial, sans-serif" font-size="7" letter-spacing=".5">EXPLORE OUR WORK</text><path d="M207 480h9m-3-3 3 3-3 3" stroke="#5F6757" stroke-width=".8"/>
+    <g clip-path="url(#photo)">
+      <path d="M353 231h442v316H353z" fill="url(#sky)"/>
+      <circle cx="730" cy="277" r="65" fill="#E8E7DA" fill-opacity=".35"/>
+      <path d="m353 530 442-16v33H353Z" fill="#A7AB94"/>
+      <path d="m392 294 248-46 116 58-230 48Z" fill="#E4DAC6"/>
+      <path d="m392 294 134 60v193H392Z" fill="#C6BBA5"/>
+      <path d="m526 354 230-48v241H526Z" fill="url(#side)"/>
+      <path d="m392 294 248-46v250l-248 49Z" fill="url(#face)"/>
+      <path d="m640 248 116 58v241l-116-49Z" fill="#AB9E86"/>
+      <path d="m640 248 116 58v10l-116-58Z" fill="#C6BBA7"/>
+      <path d="m401 305 229-42v9l-229 43Z" fill="#B1A58E"/>
+      <path d="m401 362 229-43v8l-229 43Z" fill="#B8AB92"/>
+      <path d="m401 421 229-43v8l-229 43Z" fill="#B5A88F"/>
+      <path d="m401 479 229-43v8l-229 43Z" fill="#B0A38B"/>
+      <g fill="#39453F"><path d="m417 319 38-7v33l-38 7ZM474 308l39-7v33l-39 7ZM533 297l39-7v33l-39 7ZM592 286l28-5v33l-28 5Z"/><path d="m417 377 38-7v33l-38 7ZM474 366l39-7v33l-39 7ZM533 355l39-7v33l-39 7ZM592 344l28-5v33l-28 5Z"/><path d="m417 435 38-7v33l-38 7ZM474 424l39-7v33l-39 7ZM533 413l39-7v33l-39 7ZM592 402l28-5v33l-28 5Z"/><path d="m417 494 38-7v54l-38 7ZM474 483l39-7v60l-39 7ZM533 472l39-7v59l-39 7ZM592 461l28-5v59l-28 7Z"/></g>
+      <g stroke="#8E9A8C" stroke-width="1"><path d="M436 316v33m57-44v33m59-44v32m54-42v32M436 374v33m57-44v33m59-44v32m54-42v32M436 432v33m57-44v33m59-44v32m54-42v32"/></g>
+      <g fill="#D9CDB4"><path d="m411 313 48-9v7l-48 9ZM469 302l48-9v7l-48 9ZM528 291l48-9v7l-48 9ZM587 280l37-7v7l-37 7Z"/><path d="m411 371 48-9v7l-48 9ZM469 360l48-9v7l-48 9ZM528 349l48-9v7l-48 9ZM587 338l37-7v7l-37 7Z"/><path d="m411 429 48-9v7l-48 9ZM469 418l48-9v7l-48 9ZM528 407l48-9v7l-48 9ZM587 396l37-7v7l-37 7Z"/></g>
+      <g fill="#696D59"><path d="m657 287 16 8v32l-16-8ZM690 304l16 8v32l-16-8ZM722 320l16 8v32l-16-8Z"/><path d="m657 347 16 8v32l-16-8ZM690 364l16 8v32l-16-8ZM722 380l16 8v32l-16-8Z"/><path d="m657 407 16 8v32l-16-8ZM690 424l16 8v32l-16-8ZM722 440l16 8v32l-16-8Z"/></g>
+      <path d="m353 543 103-26 12 30H353Z" fill="#B7B8A5"/>
+      <path d="m753 478 42 9v60h-42Z" fill="#B7B29D"/>
+      <path d="M779 547V367" stroke="#757B64" stroke-width="3"/><path d="M779 472c-42-17-43-43-35-64 28 6 37 30 35 64Zm1-41c-6-40 10-65 28-78 17 34 3 62-28 78Zm-1 63c23-36 38-36 54-32-5 24-19 35-54 32Z" fill="#758269"/>
+      <path d="M353 231h442v316H353z" fill="url(#grain)"/>
+    </g>
+    <rect x="367" y="510" width="116" height="23" fill="#F3F0E5" fill-opacity=".92"/>
+    <text x="378" y="524" fill="#6E7165" font-family="Arial, sans-serif" font-size="6" letter-spacing=".5">01 / THE COURTYARD HOUSE</text>
+    <circle cx="770" cy="521" r="12" fill="#F3F0E5"/><path d="m766 525 8-8m-8 0h8v8" stroke="#6B705F" stroke-width="1"/>
+    <text x="104" y="536" fill="#9B9B8D" font-family="Arial, sans-serif" font-size="6" letter-spacing=".4">EST. 2024   —   SPACES FOR LIVING</text>
+  </g>
+</svg>
