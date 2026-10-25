@@ -1,9 +1,10 @@
+import { initIntro } from './intro.js';
+
 const root = document.documentElement;
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
 let reducedMotion = motionPreference.matches;
-let scene = null;
-let introTimer;
-let introFrame;
+let dotField = null;
+let fieldGeneration = 0;
 let toastTimer;
 
 const toast = (message) => {
@@ -14,49 +15,30 @@ const toast = (message) => {
   toastTimer = setTimeout(() => el.classList.remove('visible'), 2800);
 };
 
-function finishIntro() {
-  root.classList.remove('intro-pending', 'intro-playing');
-  document.body.style.overflow = '';
-  clearTimeout(introTimer);
-  cancelAnimationFrame(introFrame);
-  scene?.pulse();
-}
-
-function playIntro(replay = false) {
-  if (reducedMotion) { finishIntro(); if (replay) toast('Reduced motion is enabled on your device.'); return; }
-  clearTimeout(introTimer);
-  cancelAnimationFrame(introFrame);
-  root.classList.remove('intro-pending', 'intro-playing');
-  void document.querySelector('.intro').offsetWidth;
-  root.classList.add('intro-playing');
-  document.body.style.overflow = 'hidden';
-  try { localStorage.setItem('aa-intro-seen', 'true'); } catch { /* Storage may be unavailable in private browsing. */ }
-  const counter = document.querySelector('.intro-count');
-  const started = performance.now();
-  const count = (now) => {
-    const progress = Math.min((now - started) / 2500, 1);
-    counter.textContent = String(Math.round(progress * 100)).padStart(2, '0');
-    if (progress < 1) introFrame = requestAnimationFrame(count);
-  };
-  introFrame = requestAnimationFrame(count);
-  introTimer = setTimeout(finishIntro, 3370);
-}
-
-if (root.classList.contains('intro-pending')) playIntro();
-document.querySelector('.replay-intro').addEventListener('click', () => playIntro(true));
-document.addEventListener('keydown', (event) => {
-  if ((event.key === 'Escape' || event.key === 'Tab') && root.classList.contains('intro-playing')) finishIntro();
+const intro = initIntro({
+  motionPreference,
+  onReveal: () => dotField?.pulse(),
+  onReducedReplay: () => toast('Reduced motion is enabled on your device.')
 });
+document.querySelector('.replay-intro').addEventListener('click', () => intro.play({ replay: true }));
 
-import('./aa-scene.js').then(({ initAAScene }) => {
-  const container = document.querySelector('#aa-scene');
-  scene = initAAScene(container, { reducedMotion });
-  if (scene) container.classList.add('aa-scene-ready');
-  updateScroll();
-}).catch((error) => {
-  // The letterform fallback keeps the composition complete without WebGL.
-  console.warn('The static AA monogram is being used.', error.message);
-});
+async function mountDotField() {
+  const generation = ++fieldGeneration;
+  try {
+    const { initDotField } = await import('./dot-field.js');
+    if (generation !== fieldGeneration) return;
+    const container = document.querySelector('#dot-field');
+    dotField?.dispose();
+    container.classList.remove('dot-field-ready');
+    dotField = initDotField(container, { reducedMotion });
+    container.classList.toggle('dot-field-ready', !!dotField);
+    updateScroll();
+  } catch (error) {
+    // A static point field keeps the composition complete without Canvas.
+    console.warn('The static dot field is being used.', error.message);
+  }
+}
+mountDotField();
 
 const menuButton = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('.mobile-nav');
@@ -130,7 +112,7 @@ function updateScroll() {
   words.forEach((word, i) => word.classList.toggle('lit', i < Math.ceil(wordProgress * words.length)));
   manifestoDots.forEach((dot, i) => dot.classList.toggle('lit', i < Math.ceil(wordProgress * 5)));
   const heroBounds = hero.getBoundingClientRect();
-  scene?.setProgress(clamp(-heroBounds.top / heroBounds.height));
+  dotField?.setProgress(clamp(-heroBounds.top / heroBounds.height));
   let current = -1;
   trackedSections.forEach((section, i) => {
     const rect = section.getBoundingClientRect();
@@ -147,16 +129,8 @@ addEventListener('scroll', requestScrollUpdate, { passive: true });
 addEventListener('resize', requestScrollUpdate, { passive: true });
 motionPreference.addEventListener('change', ({ matches }) => {
   reducedMotion = matches;
-  if (matches) finishIntro();
-  scene?.dispose();
-  scene = null;
-  const container = document.querySelector('#aa-scene');
-  container.classList.remove('aa-scene-ready');
-  import('./aa-scene.js').then(({ initAAScene }) => {
-    scene = initAAScene(container, { reducedMotion });
-    container.classList.toggle('aa-scene-ready', !!scene);
-    updateScroll();
-  });
+  if (matches) intro.finish('preference');
+  mountDotField();
   updateScroll();
 });
 updateScroll();

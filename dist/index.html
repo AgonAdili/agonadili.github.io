@@ -12,15 +12,36 @@
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/space-grotesk.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="./styles.css">
-  <script>document.documentElement.classList.add('js');let introSeen=false;try{introSeen=!!localStorage.getItem('aa-intro-seen')}catch{}if(!introSeen&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-pending');setTimeout(()=>document.documentElement.classList.remove('intro-pending'),4200)}</script>
+  <link rel="stylesheet" href="./intro.css">
+  <script>document.documentElement.classList.add('js');let introSeen=false;try{introSeen=!!localStorage.getItem('aa-intro-v2-seen')}catch{}if(!introSeen&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-pending');setTimeout(()=>document.documentElement.classList.remove('intro-pending'),6000)}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="intro" aria-hidden="true">
-    <div class="intro-meta mono"><span>AGON ADILI</span><span>PORTFOLIO / 2026</span></div>
-    <div class="intro-mark"><span class="intro-a intro-a-one">A</span><span class="intro-a intro-a-two">A</span><i></i></div>
-    <div class="intro-bottom mono"><span>BUILDING SOMETHING GOOD.</span><span class="intro-count">00</span></div>
-    <div class="intro-line"></div>
+  <div class="intro" role="dialog" aria-modal="true" aria-label="Agon Adili — AA introduction" aria-hidden="true" inert data-phase="assemble">
+    <div class="intro-shutter intro-shutter-left" aria-hidden="true"></div>
+    <div class="intro-shutter intro-shutter-right" aria-hidden="true"></div>
+    <div class="intro-grid" aria-hidden="true"></div>
+    <div class="intro-axis" aria-hidden="true"></div>
+    <div class="intro-meta mono"><span class="intro-owner">AGON ADILI <span class="intro-meta-separator">/</span> <span class="intro-meta-note">DIGITAL CRAFT</span></span><button class="intro-skip" type="button">SKIP INTRO <span aria-hidden="true">↗</span></button></div>
+    <div class="intro-stage" aria-hidden="true">
+      <div class="intro-frame"><i></i><i></i><i></i><i></i><span class="intro-frame-label mono">IDENTITY / AA — 001</span></div>
+      <div class="intro-center">
+        <svg class="intro-monogram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 460" focusable="false">
+          <defs>
+            <path id="intro-a-shape" fill-rule="evenodd" d="M18 418 153 42h91l135 376h-98l-24-75H139l-24 75Zm148-158h64l-32-104Z"/>
+            <mask id="intro-a-stencil" maskUnits="userSpaceOnUse" x="0" y="0" width="840" height="460"><rect width="840" height="460" fill="white"/><path d="M0 304h840v9H0z" fill="black"/></mask>
+          </defs>
+          <g class="intro-glyph-echo"><use href="#intro-a-shape"/><use href="#intro-a-shape" x="443"/></g>
+          <g mask="url(#intro-a-stencil)">
+            <g class="intro-glyph intro-glyph-left"><use class="intro-glyph-wire" href="#intro-a-shape"/><use class="intro-glyph-solid" href="#intro-a-shape"/></g>
+            <g class="intro-glyph intro-glyph-right"><use class="intro-glyph-wire" href="#intro-a-shape" x="443"/><use class="intro-glyph-solid" href="#intro-a-shape" x="443"/></g>
+          </g>
+        </svg>
+        <div class="intro-signature"><span>AGON ADILI</span><span class="mono">SOFTWARE DEVELOPER</span></div>
+      </div>
+    </div>
+    <div class="intro-bottom"><div class="intro-bottom-copy"><span class="intro-manifesto">CODE. CREATE. CONNECT.</span><span class="intro-sequence-label mono">FORMING IDEAS</span></div><div class="intro-meter"><span class="intro-count">00</span><span class="mono">/ 100</span></div></div>
+    <div class="intro-progress" aria-hidden="true"><i></i></div>
   </div>
   <div class="scroll-progress" aria-hidden="true"></div>
   <header class="header">
@@ -35,18 +56,17 @@
   <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" inert><a href="#work">Selected work <span>01</span></a><a href="#about">A little about me <span>02</span></a><a href="#expertise">What I do <span>03</span></a><a href="#contact">Let’s talk <span>↗</span></a></nav>
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-topline mono"><span><i class="status-dot"></i> INDEPENDENT SOFTWARE DEVELOPER</span><span class="hero-edition">A LITTLE LOGIC. A LOT OF POSSIBILITY.</span></div>
+      <div class="hero-topline mono"><span><i class="status-dot"></i>SOFTWARE DEVELOPER</span><span class="hero-edition">A LITTLE LOGIC. A LOT OF POSSIBILITY.</span></div>
       <div class="hero-content">
         <div class="hero-copy">
-          <div class="eyebrow hero-eyebrow"><span class="tiny-cross">✳</span> THE PORTFOLIO OF AGON ADILI</div>
           <h1 id="hero-title">Built with<br>logic. <span>Made</span><br><span>to feel.</span><span class="headline-period">↗</span></h1>
           <p class="hero-description">I turn complex ideas into intuitive digital experiences. From enterprise systems to the screen in your hand.</p>
           <a class="button button-lime" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
         </div>
-        <div class="hero-art" role="group" aria-label="Interactive sculpture of two metallic letter A initials">
-          <div class="art-glow"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-          <div id="aa-scene"><div class="aa-fallback" aria-hidden="true"><span>A</span><span>A</span></div></div>
-          <div class="art-coordinates mono"><span>FIG. 01 — THE INTERSECTION</span><span>LOGIC × CREATIVITY</span></div>
+        <div class="hero-art" role="group" aria-label="A flowing field of dots that responds to your pointer">
+          <div class="art-glow" aria-hidden="true"></div>
+          <div id="dot-field" aria-hidden="true"><img class="dot-field-fallback" src="./assets/dot-field-fallback.svg" alt="" width="800" height="620"></div>
+          <div class="art-coordinates mono"><span>FIG. 01 — A FIELD OF POSSIBILITIES</span><span class="field-interaction-hint">MOVE YOUR CURSOR. MAKE A LITTLE RIPPLE.</span></div>
           <span class="art-plus art-plus-one" aria-hidden="true">+</span><span class="art-plus art-plus-two" aria-hidden="true">+</span>
           <button class="replay-intro mono" aria-label="Replay the AA opening animation"><span aria-hidden="true">↻</span> REPLAY INTRO</button>
         </div>
