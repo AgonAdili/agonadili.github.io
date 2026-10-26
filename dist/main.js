@@ -24,26 +24,27 @@ document.querySelector('.replay-intro').addEventListener('click', () => intro.pl
 
 async function mountDotField() {
   const generation = ++fieldGeneration;
+  const container = document.querySelector('#dot-field');
+  let initDotField;
   try {
-    const { initDotField } = await import('./dot-field.js');
-    if (generation !== fieldGeneration) return;
-    const container = document.querySelector('#dot-field');
-    dotField?.dispose();
-    container.classList.remove('dot-field-ready');
-    dotField = initDotField(container, { reducedMotion });
-    container.classList.toggle('dot-field-ready', !!dotField);
-    updateScroll();
+    ({ initDotField } = await import('./dot-field.js'));
   } catch (error) {
-    // A static point field keeps the composition complete without Canvas.
     console.warn('The static dot field is being used.', error.message);
   }
+  if (generation !== fieldGeneration) return;
+  dotField?.dispose();
+  dotField = initDotField?.(container, { reducedMotion }) ?? null;
+  container.classList.toggle('dot-field-ready', !!dotField);
+  // A static point field keeps the composition complete without Canvas.
+  container.classList.toggle('dot-field-static', !dotField);
+  updateScroll();
 }
 mountDotField();
 
 const menuButton = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('.mobile-nav');
 function closeMenu(restoreFocus = false) {
-  const wasOpen = menuButton.getAttribute('aria-expanded') === 'true';
+  if (menuButton.getAttribute('aria-expanded') !== 'true') return;
   menuButton.setAttribute('aria-expanded', 'false');
   menuButton.setAttribute('aria-label', 'Open menu');
   mobileNav.classList.remove('open');
@@ -51,7 +52,7 @@ function closeMenu(restoreFocus = false) {
   document.body.classList.remove('menu-open');
   document.querySelector('main').inert = false;
   document.querySelector('footer').inert = false;
-  if (wasOpen && restoreFocus) menuButton.focus();
+  if (restoreFocus) menuButton.focus();
 }
 menuButton.addEventListener('click', () => {
   const opening = menuButton.getAttribute('aria-expanded') !== 'true';
@@ -63,7 +64,8 @@ menuButton.addEventListener('click', () => {
   document.querySelector('main').inert = opening;
   document.querySelector('footer').inert = opening;
 });
-mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
+// The header stays clickable above the open menu, so its links close the menu too.
+document.querySelectorAll('.header a, .mobile-nav a').forEach((link) => link.addEventListener('click', () => closeMenu()));
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeMenu(true);
   if (event.key !== 'Tab' || menuButton.getAttribute('aria-expanded') !== 'true') return;
@@ -95,7 +97,9 @@ originalStatement.split(' ').forEach((word, index) => {
 });
 const words = [...statement.querySelectorAll('span')];
 const manifesto = document.querySelector('.manifesto');
+const manifestoSticky = manifesto.querySelector('.manifesto-sticky');
 const manifestoDots = [...document.querySelectorAll('.manifesto-dots i')];
+const header = document.querySelector('.header');
 const hero = document.querySelector('.hero');
 const progressBar = document.querySelector('.scroll-progress');
 const activeLinks = [...document.querySelectorAll('.desktop-nav a')];
@@ -108,9 +112,12 @@ function updateScroll() {
   const travel = document.documentElement.scrollHeight - innerHeight;
   progressBar.style.transform = `scaleX(${travel > 0 ? scrollY / travel : 0})`;
   const bounds = manifesto.getBoundingClientRect();
-  const wordProgress = reducedMotion ? 1 : clamp((-bounds.top + innerHeight * 0.15) / Math.max(bounds.height - innerHeight * 0.85, 1));
+  // Words light up from when the statement scrolls in until its sticky panel is released below the header.
+  const revealStart = innerHeight * 0.15;
+  const revealEnd = header.offsetHeight + manifestoSticky.offsetHeight - bounds.height;
+  const wordProgress = reducedMotion ? 1 : clamp((revealStart - bounds.top) / Math.max(revealStart - revealEnd, 1));
   words.forEach((word, i) => word.classList.toggle('lit', i < Math.ceil(wordProgress * words.length)));
-  manifestoDots.forEach((dot, i) => dot.classList.toggle('lit', i < Math.ceil(wordProgress * 5)));
+  manifestoDots.forEach((dot, i) => dot.classList.toggle('lit', i < Math.ceil(wordProgress * manifestoDots.length)));
   const heroBounds = hero.getBoundingClientRect();
   dotField?.setProgress(clamp(-heroBounds.top / heroBounds.height));
   let current = -1;
@@ -138,7 +145,7 @@ updateScroll();
 
 const projects = {
   orbit: {
-    name: 'Orbit', category: 'ERP SYSTEM / WEB APPLICATION', image: './assets/orbit.svg',
+    name: 'Orbit', category: 'ERP / WEB APPLICATION', image: './assets/orbit.svg',
     description: 'An exploration of a calmer way to manage complex business operations. Orbit brings orders, inventory, and reporting into one connected workspace, with an interface designed to make the next action clear.',
     features: ['Operations dashboard', 'Inventory & orders', 'Data visualization', 'Connected workflows']
   },
@@ -171,7 +178,10 @@ for (const card of document.querySelectorAll('[data-project]')) {
     }));
     dialog.showModal();
     dialog.scrollTop = 0;
+    // Hide the page scrollbar without shifting the layout, as the intro does.
+    const scrollbar = innerWidth - root.clientWidth;
     document.body.style.overflow = 'hidden';
+    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
   });
 }
 dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
@@ -182,12 +192,14 @@ dialog.addEventListener('click', (event) => {
 });
 dialog.addEventListener('close', () => {
   document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
   projectTrigger?.focus({ preventScroll: true });
 });
 
 document.querySelector('[data-copy-email]').addEventListener('click', async (event) => {
   const button = event.currentTarget;
-  const email = 'agon.adili@gmail.com';
+  // The address is written only in index.html; copy it from the contact link.
+  const email = document.querySelector('.contact-email').href.replace(/^mailto:/, '');
   try {
     if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(email);
     else {
@@ -198,7 +210,12 @@ document.querySelector('[data-copy-email]').addEventListener('click', async (eve
       if (!copied) throw new Error('Clipboard unavailable');
     }
     button.querySelector('.copy-label').textContent = 'COPIED!';
-    toast('Email copied. Let’s make something good.');
+    toast('Email copied.');
     setTimeout(() => { button.querySelector('.copy-label').textContent = 'COPY EMAIL'; }, 2400);
   } catch { toast(email); }
 });
+
+document.querySelector('.footer-year').textContent = new Date().getFullYear();
+
+// Tells the fallback timer in index.html that the page started correctly.
+root.classList.add('js-ready');

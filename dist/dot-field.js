@@ -194,7 +194,7 @@ export function initDotField(container, { reducedMotion = false } = {}) {
   resizeObserver?.observe(container);
   if (!resizeObserver) window.addEventListener('resize', resize, { passive: true });
   const intersectionObserver = typeof IntersectionObserver === 'undefined' ? null : new IntersectionObserver(entries => {
-    visible = entries[0].isIntersecting;
+    visible = entries.at(-1).isIntersecting;
     syncAnimation();
   }, { rootMargin: '70px' });
   intersectionObserver?.observe(container);

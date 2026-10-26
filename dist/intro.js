@@ -31,13 +31,10 @@ export function initIntro({ motionPreference, onReveal = () => {}, onReducedRepl
       window.scrollTo({ left: snapshot.x, top: snapshot.y, behavior: 'instant' });
     }
     const returnTo = snapshot.focus;
-    const wasKeyboard = reason === 'keyboard';
     if (returnTo?.isConnected && returnTo !== document.body && !overlay.contains(returnTo)) {
       returnTo.focus({ preventScroll: true });
-    } else if (wasKeyboard) {
+    } else if (reason === 'keyboard') {
       document.querySelector('.skip-link').focus({ preventScroll: true });
-    } else if (reason === 'skip') {
-      document.querySelector('.hero-copy a').focus({ preventScroll: true });
     } else if (overlay.contains(document.activeElement)) {
       document.activeElement.blur();
     }
@@ -76,7 +73,8 @@ export function initIntro({ motionPreference, onReveal = () => {}, onReducedRepl
     overlay.setAttribute('aria-hidden', 'false');
     running = true;
     root.classList.add('intro-playing');
-    skip.focus({ preventScroll: true });
+    // Focus the dialog itself: screen readers enter it, and no focus ring appears on Skip.
+    overlay.focus({ preventScroll: true });
     try { localStorage.setItem(STORAGE_KEY, 'true'); } catch { /* The intro also works when storage is blocked. */ }
     const started = performance.now();
     const count = now => {
@@ -90,7 +88,7 @@ export function initIntro({ motionPreference, onReveal = () => {}, onReducedRepl
         label.textContent = 'LET’S BEGIN';
         root.classList.add('intro-exiting');
         onReveal();
-      } else if (elapsed >= 1350 && elapsed < EXIT_AT) {
+      } else if (elapsed >= 1350 && overlay.dataset.phase === 'assemble') {
         overlay.dataset.phase = 'hold';
         label.textContent = 'BUILT TO CONNECT';
       }
@@ -102,7 +100,8 @@ export function initIntro({ motionPreference, onReveal = () => {}, onReducedRepl
     timer = setTimeout(() => finish(), DURATION + 60);
   }
 
-  skip.addEventListener('click', () => finish('skip'));
+  // A click with detail 0 came from the keyboard (Enter or Space).
+  skip.addEventListener('click', (event) => finish(event.detail === 0 ? 'keyboard' : 'skip'));
   document.addEventListener('keydown', event => {
     if (!running || (event.key !== 'Escape' && event.key !== 'Tab')) return;
     event.preventDefault();

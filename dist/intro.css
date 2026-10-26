@@ -62,9 +62,9 @@
   transition: opacity 300ms, transform 450ms;
 }
 .intro-meta { top: 34px; font-size: 10px; color: var(--paper); }
-.intro-owner { display: flex; gap: 18px; align-items: center; letter-spacing: .08em; }
-.intro-meta-separator { color: var(--lime); }
-.intro-meta-note { color: #7d886d; font-size: 8px; letter-spacing: .09em; }
+/* The container takes focus while the intro plays; it needs no outline of its own. */
+.intro:focus { outline: none; }
+.intro-owner { letter-spacing: .08em; }
 .intro-skip {
   display: inline-flex;
   align-items: center;
@@ -72,7 +72,7 @@
   padding: 10px 0 10px 16px;
   color: #b6bea9;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .06em;
 }
 .intro-skip span { color: var(--lime); font-size: 19px; line-height: 1; }
@@ -109,17 +109,16 @@
 .intro-frame > i:nth-child(2) { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; }
 .intro-frame > i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; }
 .intro-frame > i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
-.intro-frame-label { position: absolute; top: -7px; left: 34px; color: #758365; font-size: 8px; letter-spacing: .12em; background: var(--intro-ink); padding-inline: 8px; }
 .intro-signature { display: flex; flex-direction: column; align-items: center; gap: 13px; opacity: 0; }
 .intro-signature > span:first-child { font-size: clamp(16px, 1.8vw, 26px); letter-spacing: .48em; padding-left: .48em; line-height: 1; font-weight: 600; }
-.intro-signature > .mono { color: #7d8a6d; font-size: 8px; letter-spacing: .24em; }
+.intro-signature > .mono { color: #7d8a6d; font-size: 10px; letter-spacing: .24em; }
 .intro-bottom { bottom: 38px; align-items: flex-end; }
 .intro-bottom-copy { display: flex; flex-direction: column; gap: 12px; }
 .intro-manifesto { font-size: 12px; font-weight: 600; letter-spacing: -.02em; color: #bfc8b2; }
-.intro-sequence-label { font-size: 8px; letter-spacing: .15em; color: #758565; }
+.intro-sequence-label { font-size: 10px; letter-spacing: .15em; color: #778767; }
 .intro-meter { display: flex; align-items: baseline; gap: 11px; }
-.intro-count { font-family: var(--font); font-size: 42px; font-weight: 500; line-height: 1; letter-spacing: -.07em; color: var(--lime); min-width: 2ch; text-align: right; font-variant-numeric: tabular-nums; }
-.intro-meter > .mono { font-size: 8px; color: #738164; }
+.intro-count { font-family: var(--font); font-size: 42px; font-weight: 400; line-height: 1; letter-spacing: -.07em; color: var(--lime); min-width: 2ch; text-align: right; font-variant-numeric: tabular-nums; }
+.intro-meter > .mono { font-size: 10px; color: #79866a; }
 .intro-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; z-index: 4; background: #dcff6512; }
 .intro-progress > i { display: block; width: 100%; height: 100%; background: var(--lime); transform: scaleX(var(--intro-progress)); transform-origin: left; }
 
@@ -156,26 +155,21 @@
 @keyframes intro-signature-arrive { from { opacity: 0; transform: translateY(15px); letter-spacing: .2em; } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 760px) {
-  .intro-meta { top: 24px; font-size: 9px; }
-  .intro-owner { gap: 12px; }
-  .intro-meta-note,
-  .intro-meta-separator { display: none; }
-  .intro-skip { font-size: 8px; gap: 15px; }
+  .intro-meta { top: 24px; }
+  .intro-skip { gap: 15px; }
   .intro-stage { inset: 16% 0 20%; }
   .intro-frame { inset: 15% 7%; }
-  .intro-frame-label { font-size: 6px; left: 22px; top: -5px; }
   .intro-frame > i { width: 13px; height: 13px; }
   .intro-monogram { width: calc(100vw - 44px); max-height: 40svh; }
   .intro-center { gap: 24px; }
   .intro-signature { gap: 12px; }
   .intro-signature > span:first-child { font-size: 16px; letter-spacing: .34em; padding-left: .34em; }
-  .intro-signature > .mono { font-size: 6px; letter-spacing: .2em; }
+  .intro-signature > .mono { letter-spacing: .2em; }
   .intro-bottom { bottom: 28px; }
   .intro-manifesto { font-size: 10px; }
-  .intro-sequence-label { font-size: 7px; letter-spacing: .08em; }
+  .intro-sequence-label { letter-spacing: .08em; }
   .intro-count { font-size: 34px; }
   .intro-meter { gap: 8px; }
-  .intro-meter > .mono { font-size: 7px; }
 }
 @media (max-height: 520px) and (min-width: 600px) {
   .intro-stage { inset: 12% 0 14%; }
@@ -189,5 +183,4 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .intro { display: none !important; }
-  .intro-playing .hero-copy { opacity: 1; transform: none; }
 }

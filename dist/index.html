@@ -4,38 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171816">
-  <meta name="description" content="Agon Adili — software developer turning complex ideas into thoughtful digital experiences. ERP systems, websites, web apps, and mobile applications.">
-  <meta property="og:title" content="Agon Adili — Code with purpose. Experiences with feeling.">
-  <meta property="og:description" content="Explore the digital world of Agon Adili. Software, websites, web applications, and mobile experiences.">
+  <meta name="description" content="Agon Adili — software developer turning complex ideas into thoughtful digital experiences. ERP and business software, websites, web applications, and mobile applications.">
+  <meta property="og:title" content="Agon Adili — Built with logic. Made to feel.">
+  <meta property="og:description" content="Software developer building ERP and business software, websites, web applications, and mobile applications.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://agonadili.github.io/">
+  <meta property="og:image" content="https://agonadili.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Agon Adili — Built with logic. Made to feel.">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Agon Adili — Software Developer</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="./assets/space-grotesk.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./intro.css">
-  <script>document.documentElement.classList.add('js');let introSeen=false;try{introSeen=!!localStorage.getItem('aa-intro-v2-seen')}catch{}if(!introSeen&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-pending');setTimeout(()=>document.documentElement.classList.remove('intro-pending'),6000)}</script>
+  <script>
+    document.documentElement.classList.add('js');
+    let introSeen = false;
+    try { introSeen = !!localStorage.getItem('aa-intro-v2-seen'); } catch {}
+    if (!introSeen && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro-pending');
+    // If main.js never finishes starting, show the page without its effects instead of leaving it hidden.
+    setTimeout(() => { if (!document.documentElement.classList.contains('js-ready')) document.documentElement.classList.remove('js', 'intro-pending'); }, 6000);
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="intro" role="dialog" aria-modal="true" aria-label="Agon Adili — AA introduction" aria-hidden="true" inert data-phase="assemble">
+  <div class="intro" role="dialog" aria-modal="true" aria-label="Agon Adili — introduction" aria-hidden="true" inert tabindex="-1" data-phase="assemble">
     <div class="intro-shutter intro-shutter-left" aria-hidden="true"></div>
     <div class="intro-shutter intro-shutter-right" aria-hidden="true"></div>
     <div class="intro-grid" aria-hidden="true"></div>
     <div class="intro-axis" aria-hidden="true"></div>
-    <div class="intro-meta mono"><span class="intro-owner">AGON ADILI <span class="intro-meta-separator">/</span> <span class="intro-meta-note">DIGITAL CRAFT</span></span><button class="intro-skip" type="button">SKIP INTRO <span aria-hidden="true">↗</span></button></div>
+    <div class="intro-meta mono"><span class="intro-owner">AGON ADILI</span><button class="intro-skip" type="button">SKIP INTRO <span aria-hidden="true">↗</span></button></div>
     <div class="intro-stage" aria-hidden="true">
-      <div class="intro-frame"><i></i><i></i><i></i><i></i><span class="intro-frame-label mono">IDENTITY / AA — 001</span></div>
+      <div class="intro-frame"><i></i><i></i><i></i><i></i></div>
       <div class="intro-center">
         <svg class="intro-monogram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 460" focusable="false">
           <defs>
-            <path id="intro-a-shape" fill-rule="evenodd" d="M18 418 153 42h91l135 376h-98l-24-75H139l-24 75Zm148-158h64l-32-104Z"/>
-            <mask id="intro-a-stencil" maskUnits="userSpaceOnUse" x="0" y="0" width="840" height="460"><rect width="840" height="460" fill="white"/><path d="M0 304h840v9H0z" fill="black"/></mask>
+            <!-- One half of the ΛΛ brand mark (the header logo path, scaled 12×). -->
+            <path id="intro-mark-shape" d="M102 416 282 44h96L198 416Zm168-120 48-108 108 228h-108Z"/>
           </defs>
-          <g class="intro-glyph-echo"><use href="#intro-a-shape"/><use href="#intro-a-shape" x="443"/></g>
-          <g mask="url(#intro-a-stencil)">
-            <g class="intro-glyph intro-glyph-left"><use class="intro-glyph-wire" href="#intro-a-shape"/><use class="intro-glyph-solid" href="#intro-a-shape"/></g>
-            <g class="intro-glyph intro-glyph-right"><use class="intro-glyph-wire" href="#intro-a-shape" x="443"/><use class="intro-glyph-solid" href="#intro-a-shape" x="443"/></g>
-          </g>
+          <g class="intro-glyph-echo"><use href="#intro-mark-shape"/><use href="#intro-mark-shape" x="312"/></g>
+          <g class="intro-glyph intro-glyph-left"><use class="intro-glyph-wire" href="#intro-mark-shape"/><use class="intro-glyph-solid" href="#intro-mark-shape"/></g>
+          <g class="intro-glyph intro-glyph-right"><use class="intro-glyph-wire" href="#intro-mark-shape" x="312"/><use class="intro-glyph-solid" href="#intro-mark-shape" x="312"/></g>
         </svg>
         <div class="intro-signature"><span>AGON ADILI</span><span class="mono">SOFTWARE DEVELOPER</span></div>
       </div>
@@ -49,50 +60,50 @@
       <svg viewBox="0 0 56 38" aria-hidden="true"><path d="M1 34 16 3h8L9 34Zm14-10 4-9 9 19h-9Zm12 10L42 3h8L35 34Zm14-10 4-9 9 19h-9Z" fill="currentColor"/></svg>
       <span>Agon Adili<span class="brand-reg">✳</span></span>
     </a>
-    <nav class="desktop-nav" aria-label="Main navigation"><a href="#work">Work <span>03</span></a><a href="#about">About</a><a href="#expertise">Expertise</a></nav>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a><a href="#expertise">Expertise</a></nav>
     <a href="#contact" class="header-contact">Let’s talk <span aria-hidden="true">↗</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu"><span></span><span></span></button>
   </header>
-  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" inert><a href="#work">Selected work <span>01</span></a><a href="#about">A little about me <span>02</span></a><a href="#expertise">What I do <span>03</span></a><a href="#contact">Let’s talk <span>↗</span></a></nav>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" inert><a href="#about">About <span aria-hidden="true">01</span></a><a href="#work">Work <span aria-hidden="true">02</span></a><a href="#expertise">Expertise <span aria-hidden="true">03</span></a><a href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></nav>
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-topline mono"><span><i class="status-dot"></i>SOFTWARE DEVELOPER</span><span class="hero-edition">A LITTLE LOGIC. A LOT OF POSSIBILITY.</span></div>
+      <div class="hero-topline mono"><span><i class="status-dot"></i>SOFTWARE DEVELOPER</span></div>
       <div class="hero-content">
         <div class="hero-copy">
-          <h1 id="hero-title">Built with<br>logic. <span>Made</span><br><span>to feel.</span><span class="headline-period">↗</span></h1>
+          <h1 id="hero-title">Built with<br>logic. <span>Made</span><br><span>to feel.</span><span class="headline-arrow" aria-hidden="true">↗</span></h1>
           <p class="hero-description">I turn complex ideas into intuitive digital experiences. From enterprise systems to the screen in your hand.</p>
           <a class="button button-lime" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
         </div>
         <div class="hero-art" role="group" aria-label="A flowing field of dots that responds to your pointer">
           <div class="art-glow" aria-hidden="true"></div>
-          <div id="dot-field" aria-hidden="true"><img class="dot-field-fallback" src="./assets/dot-field-fallback.svg" alt="" width="800" height="620"></div>
-          <div class="art-coordinates mono"><span>FIG. 01 — A FIELD OF POSSIBILITIES</span><span class="field-interaction-hint">MOVE YOUR CURSOR. MAKE A LITTLE RIPPLE.</span></div>
+          <div id="dot-field" aria-hidden="true"></div>
+          <div class="field-hint mono"><span class="field-hint-pointer">MOVE YOUR CURSOR. MAKE A LITTLE RIPPLE.</span><span class="field-hint-touch">TOUCH THE FIELD. MAKE A LITTLE RIPPLE.</span></div>
           <span class="art-plus art-plus-one" aria-hidden="true">+</span><span class="art-plus art-plus-two" aria-hidden="true">+</span>
-          <button class="replay-intro mono" aria-label="Replay the AA opening animation"><span aria-hidden="true">↻</span> REPLAY INTRO</button>
+          <button class="replay-intro mono" type="button"><span aria-hidden="true">↻</span> REPLAY INTRO</button>
         </div>
       </div>
-      <div class="hero-bottom mono"><a href="#about" class="scroll-hint"><span class="scroll-arrow" aria-hidden="true">↓</span> SCROLL TO DISCOVER</a><span class="hero-bottom-right">GOOD THINGS HAPPEN<br>WHEN IDEAS MEET EXECUTION.</span><span class="hero-index">01 / 05</span></div>
+      <div class="hero-bottom mono"><a href="#about" class="scroll-hint"><span class="scroll-arrow" aria-hidden="true">↓</span> SCROLL TO DISCOVER</a></div>
     </section>
-    <div class="discipline-strip" aria-label="Areas of development"><div class="discipline-track"><span>ERP SYSTEMS</span><i>✳</i><span>WEB EXPERIENCES</span><i>✳</i><span>MOBILE APPLICATIONS</span><i>✳</i><span>THOUGHTFUL SOFTWARE</span><i>✳</i><span aria-hidden="true">ERP SYSTEMS</span><i aria-hidden="true">✳</i><span aria-hidden="true">WEB EXPERIENCES</span><i aria-hidden="true">✳</i><span aria-hidden="true">MOBILE APPLICATIONS</span><i aria-hidden="true">✳</i><span aria-hidden="true">THOUGHTFUL SOFTWARE</span><i aria-hidden="true">✳</i></div></div>
+    <div class="discipline-strip" aria-label="Areas of development"><div class="discipline-track"><span>ERP & BUSINESS SOFTWARE</span><i aria-hidden="true">✳</i><span>WEBSITES & EXPERIENCES</span><i aria-hidden="true">✳</i><span>WEB APPLICATIONS</span><i aria-hidden="true">✳</i><span>MOBILE APPLICATIONS</span><i aria-hidden="true">✳</i><span aria-hidden="true">ERP & BUSINESS SOFTWARE</span><i aria-hidden="true">✳</i><span aria-hidden="true">WEBSITES & EXPERIENCES</span><i aria-hidden="true">✳</i><span aria-hidden="true">WEB APPLICATIONS</span><i aria-hidden="true">✳</i><span aria-hidden="true">MOBILE APPLICATIONS</span><i aria-hidden="true">✳</i></div></div>
     <section class="about-section section-pad" id="about" aria-labelledby="about-title">
-      <div class="section-label mono"><span>01 / THE PERSON BEHIND THE CODE</span><span>ABOUT ME</span></div>
+      <div class="section-label mono"><span>01 / THE PERSON BEHIND THE CODE</span><span>ABOUT</span></div>
       <div class="about-layout">
-        <div class="about-side"><div class="about-glyph" aria-hidden="true"><svg viewBox="0 0 56 38" focusable="false"><path d="M1 34 16 3h8L9 34Zm14-10 4-9 9 19h-9Zm12 10L42 3h8L35 34Zm14-10 4-9 9 19h-9Z" fill="currentColor"/></svg></div><p class="mono">A DEVELOPER’S MIND.<br>A MAKER’S CURIOSITY.</p></div>
-        <div class="about-copy"><h2 id="about-title" class="reveal-text">Big-picture thinker.<br>Small-detail person.</h2><p class="about-intro reveal">Hey, I’m Agon — a software developer who enjoys making complicated things feel simple.</p><p class="reveal">My work spans ERP software, websites, web applications, and mobile apps. I like connecting the dots between a real problem, a considered interface, and the system that makes it all work.</p><p class="reveal">Whether it’s a business running smoother or a small interaction feeling just right, I care about what happens on both sides of the screen.</p><a class="text-link reveal" href="#contact">Have something in mind? Let’s build it. <span>↗</span></a></div>
+        <div class="about-side"><div class="about-glyph" aria-hidden="true"><svg viewBox="0 0 56 38" focusable="false"><path d="M1 34 16 3h8L9 34Zm14-10 4-9 9 19h-9Zm12 10L42 3h8L35 34Zm14-10 4-9 9 19h-9Z" fill="currentColor"/></svg></div></div>
+        <div class="about-copy"><h2 id="about-title" class="reveal">Big-picture thinker.<br>Small-detail person.</h2><p class="about-intro reveal">Hey, I’m Agon — a software developer who enjoys making complicated things feel simple.</p><p class="reveal">My work spans ERP and business software, websites, web applications, and mobile applications. I like connecting the dots between a real problem, a considered interface, and the system that makes it all work.</p><p class="reveal">Whether it’s a business running smoother or a small interaction feeling just right, I care about what happens on both sides of the screen.</p><a class="text-link reveal" href="#contact">Have something in mind? Let’s build it. <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
-    <section class="manifesto" aria-labelledby="manifesto-title"><div class="manifesto-sticky"><div class="section-label mono"><span>THE WAY I SEE IT</span><span>IDEA → SYSTEM → EXPERIENCE</span></div><h2 id="manifesto-title" class="word-reveal">Behind every great experience is a system that just makes sense.</h2><div class="manifesto-foot mono"><span>SCROLL TO CONNECT THE DOTS</span><span class="manifesto-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div></section>
+    <section class="manifesto" aria-labelledby="manifesto-title"><div class="manifesto-sticky"><div class="section-label mono"><span>THE WAY I SEE IT</span><span>IDEA → SYSTEM → EXPERIENCE</span></div><h2 id="manifesto-title" class="word-reveal">Behind every great experience is a system that just makes sense.</h2><div class="manifesto-foot"><span class="manifesto-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div></section>
     <section class="work-section section-pad" id="work" aria-labelledby="work-title">
-      <div class="section-label mono"><span>02 / IDEAS IN ACTION</span><span>SELECTED CONCEPTS, 2026</span></div>
-      <div class="section-heading"><h2 id="work-title" class="reveal">Different challenges.<br><span>Same attention to detail.</span></h2><p class="reveal">A few possibilities, brought to life.<br>Concept projects for now — real work coming soon.</p></div>
+      <div class="section-label mono"><span>02 / IDEAS IN ACTION</span><span>WORK</span></div>
+      <div class="section-heading"><h2 id="work-title" class="reveal">Different challenges.<br><span>Same attention to detail.</span></h2><p class="reveal">A few possibilities, brought to life.<br>Concept projects for now — client case studies coming soon.</p></div>
       <div class="project-grid">
         <button class="project-card reveal" data-project="orbit" aria-label="Explore Orbit ERP concept project"><div class="project-art project-orbit"><span class="project-badge mono">01 / CONCEPT</span><img src="./assets/orbit.svg" alt="Orbit ERP concept with operations dashboard, charts, and inventory overview" width="900" height="620" loading="lazy"><span class="project-open" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>Orbit</h3><p>Complex operations. One clear view.</p></div><span class="tag mono">ERP / WEB APP</span></div></button>
         <button class="project-card reveal" data-project="forma" aria-label="Explore Forma website concept project"><div class="project-art project-forma"><span class="project-badge mono">02 / CONCEPT</span><img src="./assets/forma.svg" alt="Forma architecture website concept with bold editorial typography and architectural imagery" width="900" height="620" loading="lazy"><span class="project-open" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>Forma</h3><p>A digital space, beautifully considered.</p></div><span class="tag mono">WEBSITE</span></div></button>
-        <button class="project-card project-wide reveal" data-project="signal" aria-label="Explore Signal mobile app concept project"><div class="project-art project-signal"><span class="project-badge mono">03 / CONCEPT</span><img src="./assets/signal.svg" alt="Signal mobile application concept with two dark interface phone screens and lime accents" width="900" height="620" loading="lazy"><span class="project-open" aria-hidden="true">↗</span><div class="wide-project-label"><span class="mono">LESS NOISE. MORE FOCUS.</span><h3>Your day.<br>In your rhythm.</h3><span class="mono">MOBILE EXPERIENCE / SIGNAL</span></div></div><div class="project-meta"><div><h3>Signal</h3><p>A little structure for the everyday.</p></div><span class="tag mono">MOBILE APP</span></div></button>
+        <button class="project-card project-wide reveal" data-project="signal" aria-label="Explore Signal mobile app concept project"><div class="project-art project-signal"><span class="project-badge mono">03 / CONCEPT</span><img src="./assets/signal.svg" alt="Signal mobile application concept with two dark interface phone screens and lime accents" width="900" height="620" loading="lazy"><span class="project-open" aria-hidden="true">↗</span><div class="wide-project-label"><span class="mono">LESS NOISE. MORE SIGNAL.</span><h3>Your day.<br>In your rhythm.</h3><span class="mono">MOBILE EXPERIENCE / SIGNAL</span></div></div><div class="project-meta"><div><h3>Signal</h3><p>A little structure for the everyday.</p></div><span class="tag mono">MOBILE APP</span></div></button>
       </div>
     </section>
     <section class="expertise-section section-pad" id="expertise" aria-labelledby="expertise-title">
-      <div class="section-label mono"><span>03 / FROM FIRST IDEA TO FINAL DETAIL</span><span>WHAT I DO</span></div>
+      <div class="section-label mono"><span>03 / FROM FIRST IDEA TO FINAL DETAIL</span><span>EXPERTISE</span></div>
       <div class="expertise-layout"><div class="expertise-intro"><h2 id="expertise-title" class="reveal">The full picture.<br><span>Every layer.</span></h2><p class="reveal">Different platforms. Connected thinking.<br>I build the experience and the engine behind it.</p><div class="expertise-star" aria-hidden="true">✳</div></div><div class="expertise-list">
         <details name="expertise" class="expertise-item reveal" open><summary><span class="mono">01</span><h3>ERP & business software</h3><span class="accordion-plus" aria-hidden="true">+</span></summary><div class="expertise-detail"><p>Clear workflows for complex operations. Custom systems that connect the moving parts of a business, from inventory and orders to the information behind better decisions.</p><div class="expertise-tags mono"><span>BUSINESS LOGIC</span><span>DATA & INTEGRATIONS</span></div></div></details>
         <details name="expertise" class="expertise-item reveal"><summary><span class="mono">02</span><h3>Websites & experiences</h3><span class="accordion-plus" aria-hidden="true">+</span></summary><div class="expertise-detail"><p>Purposeful websites with a strong identity. Responsive layouts, thoughtful motion, and the small interactions that make exploring a site feel natural.</p><div class="expertise-tags mono"><span>CREATIVE DEVELOPMENT</span><span>RESPONSIVE DESIGN</span></div></div></details>
@@ -101,14 +112,14 @@
       </div></div>
     </section>
     <section class="contact-section section-pad" id="contact" aria-labelledby="contact-title">
-      <div class="section-label mono"><span>04 / THE NEXT GOOD THING</span><span>STARTS WITH A CONVERSATION</span></div>
-      <div class="contact-top"><div><div class="eyebrow"><i class="status-dot"></i> IDEAS WELCOME</div><h2 id="contact-title" class="reveal">Have a good idea?<br><span>Let’s make it real.</span></h2></div><a class="contact-arrow" href="mailto:agon.adili@gmail.com" aria-label="Email Agon about your project">↗</a></div>
-      <div class="contact-bottom"><a href="mailto:agon.adili@gmail.com" class="contact-email">agon.adili@gmail.com <span>↗</span></a><button class="copy-email mono" data-copy-email><span class="copy-icon" aria-hidden="true">▣</span> <span class="copy-label">COPY EMAIL</span></button><span class="contact-note mono">FROM A SIMPLE HELLO<br>TO SOMETHING EXCEPTIONAL.</span></div>
+      <div class="section-label mono"><span>04 / THE NEXT GOOD THING</span><span>CONTACT</span></div>
+      <div class="contact-top"><h2 id="contact-title" class="reveal">Have a good idea?<br><span>Let’s make it real.</span></h2><a class="contact-arrow" href="mailto:agon.adili@gmail.com" aria-label="Email Agon about your project">↗</a></div>
+      <div class="contact-bottom"><a href="mailto:agon.adili@gmail.com" class="contact-email">agon.adili@gmail.com <span aria-hidden="true">↗</span></a><button class="copy-email mono" type="button" data-copy-email><span class="copy-icon" aria-hidden="true">▣</span> <span class="copy-label">COPY EMAIL</span></button></div>
     </section>
   </main>
-  <footer class="footer"><a href="#home" class="footer-brand" aria-label="Back to top"><svg viewBox="0 0 56 38" aria-hidden="true" focusable="false"><path d="M1 34 16 3h8L9 34Zm14-10 4-9 9 19h-9Zm12 10L42 3h8L35 34Zm14-10 4-9 9 19h-9Z" fill="currentColor"/></svg><span>© 2026 AGON ADILI</span></a><span class="mono footer-made">THOUGHTFULLY BUILT. DOWN TO THE LAST PIXEL.</span><a href="#home" class="back-top mono">BACK TO TOP <span aria-hidden="true">↑</span></a></footer>
-  <dialog class="project-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><span class="mono">A CLOSER LOOK / CONCEPT STUDY</span><button class="dialog-close" aria-label="Close project details">✕</button></div><div class="dialog-image"></div><div class="dialog-content"><span class="mono dialog-category"></span><h2 id="dialog-title"></h2><p class="dialog-description"></p><div class="dialog-features"></div><p class="dialog-note mono">ILLUSTRATIVE CONCEPT — PLACEHOLDER FOR A FUTURE PROJECT.</p><a class="text-link" href="mailto:agon.adili@gmail.com">Let’s build something like this <span>↗</span></a></div></dialog>
+  <footer class="footer"><div class="footer-brand"><svg viewBox="0 0 56 38" aria-hidden="true" focusable="false"><path d="M1 34 16 3h8L9 34Zm14-10 4-9 9 19h-9Zm12 10L42 3h8L35 34Zm14-10 4-9 9 19h-9Z" fill="currentColor"/></svg><span>© <span class="footer-year">2026</span> AGON ADILI</span></div><a href="#home" class="back-top mono">BACK TO TOP <span aria-hidden="true">↑</span></a></footer>
+  <dialog class="project-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><span class="mono">A CLOSER LOOK / CONCEPT STUDY</span><button class="dialog-close" aria-label="Close project details">✕</button></div><div class="dialog-image"></div><div class="dialog-content"><span class="mono dialog-category"></span><h2 id="dialog-title"></h2><p class="dialog-description"></p><div class="dialog-features"></div><p class="dialog-note mono">ILLUSTRATIVE CONCEPT — PLACEHOLDER FOR A FUTURE PROJECT.</p><a class="text-link" href="mailto:agon.adili@gmail.com">Let’s build something like this <span aria-hidden="true">↗</span></a></div></dialog>
   <div class="toast mono" role="status" aria-live="polite"></div>
-  <script type="module" src="./main.js"></script>
+  <script type="module" src="./main.js" onerror="document.documentElement.classList.remove('js', 'intro-pending')"></script>
 </body>
 </html>
