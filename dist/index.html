@@ -23,7 +23,8 @@
     document.documentElement.classList.add('js');
     let introSeen = false;
     try { introSeen = !!localStorage.getItem('aa-intro-v2-seen'); } catch {}
-    if (!introSeen && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro-pending');
+    // A shared project link (#work/<slug>) opens that project straight away, without the intro.
+    if (!introSeen && !location.hash.startsWith('#work/') && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro-pending');
     // If main.js never finishes starting, show the page without its effects instead of leaving it hidden.
     setTimeout(() => { if (!document.documentElement.classList.contains('js-ready')) document.documentElement.classList.remove('js', 'intro-pending'); }, 6000);
   </script>
@@ -79,7 +80,6 @@
           <div id="dot-field" aria-hidden="true"></div>
           <div class="field-hint mono"><span class="field-hint-pointer">MOVE YOUR CURSOR. MAKE A LITTLE RIPPLE.</span><span class="field-hint-touch">TOUCH THE FIELD. MAKE A LITTLE RIPPLE.</span></div>
           <span class="art-plus art-plus-one" aria-hidden="true">+</span><span class="art-plus art-plus-two" aria-hidden="true">+</span>
-          <button class="replay-intro mono" type="button"><span aria-hidden="true">↻</span> REPLAY INTRO</button>
         </div>
       </div>
       <div class="hero-bottom mono"><a href="#about" class="scroll-hint"><span class="scroll-arrow" aria-hidden="true">↓</span> SCROLL TO DISCOVER</a></div>
@@ -96,10 +96,12 @@
     <section class="work-section section-pad" id="work" aria-labelledby="work-title">
       <div class="section-label mono"><span>02 / IDEAS IN ACTION</span><span>WORK</span></div>
       <div class="section-heading"><h2 id="work-title" class="reveal">Different challenges.<br><span>Same attention to detail.</span></h2><p class="reveal">A few possibilities, brought to life.<br>Concept projects for now — client case studies coming soon.</p></div>
-      <div class="project-grid">
-        <button class="project-card reveal" data-project="orbit" aria-label="Explore Orbit ERP concept project"><div class="project-art project-orbit"><span class="project-badge mono">01 / CONCEPT</span><img src="./assets/orbit.svg" alt="Orbit ERP concept with operations dashboard, charts, and inventory overview" width="900" height="620" loading="lazy"><span class="project-open" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>Orbit</h3><p>Complex operations. One clear view.</p></div><span class="tag mono">ERP / WEB APP</span></div></button>
-        <button class="project-card reveal" data-project="forma" aria-label="Explore Forma website concept project"><div class="project-art project-forma"><span class="project-badge mono">02 / CONCEPT</span><img src="./assets/forma.svg" alt="Forma architecture website concept with bold editorial typography and architectural imagery" width="900" height="620" loading="lazy"><span class="project-open" aria-hidden="true">↗</span></div><div class="project-meta"><div><h3>Forma</h3><p>A digital space, beautifully considered.</p></div><span class="tag mono">WEBSITE</span></div></button>
-        <button class="project-card project-wide reveal" data-project="signal" aria-label="Explore Signal mobile app concept project"><div class="project-art project-signal"><span class="project-badge mono">03 / CONCEPT</span><img src="./assets/signal.svg" alt="Signal mobile application concept with two dark interface phone screens and lime accents" width="900" height="620" loading="lazy"><span class="project-open" aria-hidden="true">↗</span><div class="wide-project-label"><span class="mono">LESS NOISE. MORE SIGNAL.</span><h3>Your day.<br>In your rhythm.</h3><span class="mono">MOBILE EXPERIENCE / SIGNAL</span></div></div><div class="project-meta"><div><h3>Signal</h3><p>A little structure for the everyday.</p></div><span class="tag mono">MOBILE APP</span></div></button>
+      <!-- Projects are listed in projects.js; work.js builds the cards, the list and the detail panel. -->
+      <div class="project-grid"></div>
+      <p class="project-fallback">Turn on JavaScript to browse the projects.</p>
+      <div class="more-projects" hidden>
+        <div class="more-projects-head mono"><h3 class="more-projects-title">More projects</h3><span class="more-projects-count" aria-hidden="true"></span></div>
+        <ol class="project-list"></ol>
       </div>
     </section>
     <section class="expertise-section section-pad" id="expertise" aria-labelledby="expertise-title">
@@ -118,7 +120,7 @@
     </section>
   </main>
   <footer class="footer"><div class="footer-brand"><svg viewBox="0 0 56 38" aria-hidden="true" focusable="false"><path d="M1 34 16 3h8L9 34Zm14-10 4-9 9 19h-9Zm12 10L42 3h8L35 34Zm14-10 4-9 9 19h-9Z" fill="currentColor"/></svg><span>© <span class="footer-year">2026</span> AGON ADILI</span></div><a href="#home" class="back-top mono">BACK TO TOP <span aria-hidden="true">↑</span></a></footer>
-  <dialog class="project-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><span class="mono">A CLOSER LOOK / CONCEPT STUDY</span><button class="dialog-close" aria-label="Close project details">✕</button></div><div class="dialog-image"></div><div class="dialog-content"><span class="mono dialog-category"></span><h2 id="dialog-title"></h2><p class="dialog-description"></p><div class="dialog-features"></div><p class="dialog-note mono">ILLUSTRATIVE CONCEPT — PLACEHOLDER FOR A FUTURE PROJECT.</p><a class="text-link" href="mailto:agon.adili@gmail.com">Let’s build something like this <span aria-hidden="true">↗</span></a></div></dialog>
+  <dialog class="project-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><span class="mono dialog-kicker">A CLOSER LOOK</span><button class="dialog-close" type="button" aria-label="Close project details">✕</button></div><div class="dialog-image"></div><div class="dialog-content"><span class="mono dialog-category"></span><h2 id="dialog-title"></h2><p class="dialog-description"></p><dl class="dialog-facts mono"></dl><div class="dialog-features"></div><div class="dialog-links"></div><p class="dialog-note mono" hidden>ILLUSTRATIVE CONCEPT — PLACEHOLDER FOR A FUTURE PROJECT.</p><a class="text-link" href="mailto:agon.adili@gmail.com">Let’s build something like this <span aria-hidden="true">↗</span></a></div></dialog>
   <div class="toast mono" role="status" aria-live="polite"></div>
   <script type="module" src="./main.js" onerror="document.documentElement.classList.remove('js', 'intro-pending')"></script>
 </body>

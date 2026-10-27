@@ -427,26 +427,6 @@ html:not(.js) #dot-field::before {
   display: none;
 }
 
-.replay-intro {
-  position: absolute;
-  right: 50px;
-  top: 25px;
-  color: #a7aa9b;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  z-index: 4;
-  transition: color .2s;
-}
-
-.replay-intro span {
-  font-size: 15px;
-}
-
-.replay-intro:hover {
-  color: var(--lime);
-}
-
 .hero-bottom {
   border-top: 1px solid var(--line);
   padding: 23px 0 25px;
@@ -721,9 +701,10 @@ html:not(.js) #dot-field::before {
 
 .project-art {
   position: relative;
+  display: block;
   overflow: hidden;
   aspect-ratio: 900/620;
-  background: #c7d4c0;
+  background: var(--project-bg, #c7d4c0);
 }
 
 .project-art>img {
@@ -737,14 +718,6 @@ html:not(.js) #dot-field::before {
   transform: scale(1.04);
 }
 
-.project-forma {
-  background: #d7d4d1;
-}
-
-.project-signal {
-  background: #23282c;
-}
-
 .project-badge {
   position: absolute;
   top: 20px;
@@ -754,6 +727,11 @@ html:not(.js) #dot-field::before {
   background: #f8f9eeab;
   padding: 5px 9px;
   border-radius: 2px;
+}
+
+.project-card.is-dark .project-badge {
+  color: #dbe4d2;
+  background: #ffffff12;
 }
 
 .project-open {
@@ -784,12 +762,18 @@ html:not(.js) #dot-field::before {
   margin-top: 22px;
 }
 
-.project-meta h3 {
+.project-heading {
+  min-width: 0;
+}
+
+.project-name {
+  display: block;
   font-size: 26px;
   letter-spacing: -.8px;
 }
 
-.project-meta p {
+.project-tagline {
+  display: block;
   font-size: 12px;
   color: #a0a593;
   margin-top: 4px;
@@ -801,6 +785,7 @@ html:not(.js) #dot-field::before {
   padding: 5px 8px;
   margin-top: 6px;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .project-wide {
@@ -812,16 +797,12 @@ html:not(.js) #dot-field::before {
   aspect-ratio: auto;
 }
 
-.project-wide .project-art>img {
+/* With feature text, the image moves to the right and the text takes the left. */
+.project-wide.has-label .project-art>img {
   width: 64%;
   margin-left: auto;
   object-fit: cover;
   object-position: center;
-}
-
-.project-wide .project-badge {
-  color: #dbe4d2;
-  background: #ffffff12;
 }
 
 .wide-project-label {
@@ -837,17 +818,159 @@ html:not(.js) #dot-field::before {
 
 .wide-project-label .mono {
   color: #bdc9ad;
+  text-transform: uppercase;
 }
 
-.wide-project-label h3 {
+.wide-project-title {
+  display: block;
   font-size: clamp(38px,4.4vw,66px);
   line-height: 1.05;
   letter-spacing: -.05em;
   color: #f0f2e9;
 }
 
-.wide-project-label>.mono:first-child {
+.wide-project-label .wide-project-kicker {
   color: var(--lime);
+}
+
+/* Feature text on light artwork. */
+.project-card:not(.is-dark) .wide-project-label .mono {
+  color: #3d4535;
+}
+
+.project-card:not(.is-dark) .wide-project-title {
+  color: var(--bg);
+}
+
+.project-card:not(.is-dark) .wide-project-label .wide-project-kicker {
+  color: #3f5a14;
+}
+
+.project-fallback {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.js .project-fallback {
+  display: none;
+}
+
+.more-projects {
+  position: relative;
+  margin-top: 96px;
+}
+
+.more-projects-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.more-projects-title {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+}
+
+.project-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0,1fr) minmax(150px,220px) 56px 32px;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.project-row-index {
+  color: var(--muted);
+}
+
+.project-row-name {
+  display: block;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -.04em;
+  transition: color .2s;
+}
+
+.project-row-tagline {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #a0a593;
+}
+
+/* On wide screens the type and year are separate columns of the row. */
+.project-row-meta {
+  display: contents;
+}
+
+.project-row-type,
+.project-row-year {
+  color: #b6bba8;
+  text-transform: uppercase;
+}
+
+.project-row-year {
+  text-align: right;
+}
+
+.project-row-arrow {
+  justify-self: end;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--lime);
+  transition: transform .3s;
+}
+
+.project-row:hover .project-row-name {
+  color: var(--lime);
+}
+
+.project-row:hover .project-row-arrow {
+  transform: rotate(45deg);
+}
+
+.project-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 300px;
+  aspect-ratio: 900/620;
+  overflow: hidden;
+  background: var(--project-bg, #1d1f1a);
+  box-shadow: 0 24px 60px #0009;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s;
+}
+
+.project-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(.94);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+}
+
+.project-preview.visible {
+  opacity: 1;
+}
+
+.project-preview.visible img {
+  transform: none;
 }
 
 .expertise-section {
@@ -1170,6 +1293,7 @@ html:not(.js) #dot-field::before {
 .dialog-image {
   height: 290px;
   overflow: hidden;
+  background: var(--project-bg, transparent);
 }
 
 .dialog-image img {
@@ -1184,6 +1308,7 @@ html:not(.js) #dot-field::before {
 
 .dialog-category {
   color: var(--lime);
+  text-transform: uppercase;
 }
 
 .dialog-content h2 {
@@ -1212,6 +1337,60 @@ html:not(.js) #dot-field::before {
   padding: 7px 10px;
   font-size: 10px;
   color: #bac3a8;
+}
+
+.dialog-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 44px;
+  margin: 24px 0 0;
+}
+
+.dialog-facts dt {
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.dialog-facts dd {
+  margin: 4px 0 0;
+  font-family: var(--font);
+  font-size: 14px;
+  letter-spacing: 0;
+  color: #d0d1c6;
+}
+
+.dialog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.dialog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 18px;
+  background: var(--lime);
+  color: var(--bg);
+  font-size: 13px;
+  transition: background .2s;
+}
+
+.dialog-link span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.dialog-link:hover {
+  background: #e8ff98;
+}
+
+/* Projects without facts, highlights or links simply skip those parts. */
+.dialog-facts:empty,
+.dialog-features:empty,
+.dialog-links:empty {
+  display: none;
 }
 
 .dialog-note {
@@ -1294,6 +1473,13 @@ html:not(.js) #dot-field::before {
   }
   .project-meta .tag {
     margin-top: 3px;
+  }
+  .project-row {
+    grid-template-columns: 44px minmax(0,1fr) minmax(130px,180px) 48px 28px;
+    gap: 18px;
+  }
+  .project-row-name {
+    font-size: 24px;
   }
 }
 
@@ -1429,12 +1615,8 @@ html:not(.js) #dot-field::before {
     bottom: 12px;
     right: 5px;
   }
-  .replay-intro {
-    top: 32px;
-    right: 5px;
-  }
   .art-plus-one {
-    top: 24%;
+    top: 8%;
     right: 9%;
   }
   .art-plus-two {
@@ -1546,10 +1728,10 @@ html:not(.js) #dot-field::before {
     margin-top: 16px;
     flex-wrap: nowrap;
   }
-  .project-meta h3 {
+  .project-name {
     font-size: 23px;
   }
-  .project-meta p {
+  .project-tagline {
     font-size: 10px;
   }
   .tag {
@@ -1562,11 +1744,45 @@ html:not(.js) #dot-field::before {
     height: auto;
     aspect-ratio: 900/620;
   }
-  .project-wide .project-art>img {
+  .project-wide.has-label .project-art>img {
     width: 100%;
     margin: 0;
   }
   .wide-project-label {
+    display: none;
+  }
+  .more-projects {
+    margin-top: 64px;
+  }
+  .project-row {
+    grid-template-columns: 30px minmax(0,1fr) 24px;
+    grid-template-areas: "index main arrow" "index meta arrow";
+    gap: 6px 14px;
+    padding: 20px 0;
+  }
+  .project-row-index {
+    grid-area: index;
+    align-self: start;
+    padding-top: 7px;
+  }
+  .project-row-main {
+    grid-area: main;
+  }
+  .project-row-name {
+    font-size: 22px;
+  }
+  .project-row-tagline {
+    display: none;
+  }
+  .project-row-meta {
+    grid-area: meta;
+    display: flex;
+    gap: 12px;
+  }
+  .project-row-arrow {
+    grid-area: arrow;
+  }
+  .project-preview {
     display: none;
   }
   .expertise-layout {

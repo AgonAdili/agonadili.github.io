@@ -1,4 +1,5 @@
 import { initIntro } from './intro.js';
+import { initWork } from './work.js';
 
 const root = document.documentElement;
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
@@ -17,10 +18,8 @@ const toast = (message) => {
 
 const intro = initIntro({
   motionPreference,
-  onReveal: () => dotField?.pulse(),
-  onReducedReplay: () => toast('Reduced motion is enabled on your device.')
+  onReveal: () => dotField?.pulse()
 });
-document.querySelector('.replay-intro').addEventListener('click', () => intro.play({ replay: true }));
 
 async function mountDotField() {
   const generation = ++fieldGeneration;
@@ -75,6 +74,9 @@ document.addEventListener('keydown', (event) => {
   else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); menuButton.focus(); }
 });
 matchMedia('(min-width: 761px)').addEventListener('change', (e) => { if (e.matches) closeMenu(); });
+
+// Builds the project cards and list before the scroll-in animations look for them.
+initWork();
 
 const revealElements = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
@@ -141,60 +143,6 @@ motionPreference.addEventListener('change', ({ matches }) => {
   updateScroll();
 });
 updateScroll();
-
-
-const projects = {
-  orbit: {
-    name: 'Orbit', category: 'ERP / WEB APPLICATION', image: './assets/orbit.svg',
-    description: 'An exploration of a calmer way to manage complex business operations. Orbit brings orders, inventory, and reporting into one connected workspace, with an interface designed to make the next action clear.',
-    features: ['Operations dashboard', 'Inventory & orders', 'Data visualization', 'Connected workflows']
-  },
-  forma: {
-    name: 'Forma', category: 'EDITORIAL WEBSITE / DIGITAL EXPERIENCE', image: './assets/forma.svg',
-    description: 'A website concept for an architecture practice, where the digital experience reflects the spaces it presents. Generous typography, a quiet color palette, and considered movement give the work room to speak.',
-    features: ['Responsive design', 'Editorial layout', 'Project storytelling', 'Considered motion']
-  },
-  signal: {
-    name: 'Signal', category: 'MOBILE APPLICATION / EVERYDAY UTILITY', image: './assets/signal.svg',
-    description: 'A focused mobile concept for finding a better daily rhythm. A clear view of tasks, a quiet focus timer, and a little perspective on progress — designed to feel helpful without adding to the noise.',
-    features: ['Mobile interface', 'Daily planning', 'Focus sessions', 'Progress insights']
-  }
-};
-const dialog = document.querySelector('.project-dialog');
-let projectTrigger;
-for (const card of document.querySelectorAll('[data-project]')) {
-  card.addEventListener('click', () => {
-    const project = projects[card.dataset.project];
-    projectTrigger = card;
-    dialog.querySelector('#dialog-title').textContent = project.name;
-    dialog.querySelector('.dialog-category').textContent = project.category;
-    dialog.querySelector('.dialog-description').textContent = project.description;
-    const image = document.createElement('img');
-    image.src = project.image;
-    image.alt = `${project.name} concept interface`;
-    dialog.querySelector('.dialog-image').replaceChildren(image);
-    dialog.querySelector('.dialog-features').replaceChildren(...project.features.map((feature) => {
-      const span = document.createElement('span'); span.textContent = feature; return span;
-    }));
-    dialog.showModal();
-    dialog.scrollTop = 0;
-    // Hide the page scrollbar without shifting the layout, as the intro does.
-    const scrollbar = innerWidth - root.clientWidth;
-    document.body.style.overflow = 'hidden';
-    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
-  });
-}
-dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', (event) => {
-  if (event.target !== dialog) return;
-  const rect = dialog.getBoundingClientRect();
-  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
-});
-dialog.addEventListener('close', () => {
-  document.body.style.overflow = '';
-  document.body.style.paddingRight = '';
-  projectTrigger?.focus({ preventScroll: true });
-});
 
 document.querySelector('[data-copy-email]').addEventListener('click', async (event) => {
   const button = event.currentTarget;

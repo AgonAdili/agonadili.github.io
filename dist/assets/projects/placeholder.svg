@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title">
+  <title id="title">Placeholder project image</title>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r="1.1" fill="#dcff65" fill-opacity=".14"/></pattern>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%"><stop stop-color="#dcff65" stop-opacity=".07"/><stop offset="1" stop-color="#dcff65" stop-opacity="0"/></radialGradient>
+  </defs>
+  <path fill="#1d1f1a" d="M0 0h900v620H0z"/>
+  <path fill="url(#dots)" d="M0 0h900v620H0z"/>
+  <path fill="url(#glow)" d="M0 0h900v620H0z"/>
+  <path d="M1 34 16 3h8L9 34Zm14-10 4-9 9 19h-9Zm12 10L42 3h8L35 34Zm14-10 4-9 9 19h-9Z" fill="#dcff65" transform="translate(380 214) scale(2.5)"/>
+  <g fill="#8b907d" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="15" letter-spacing="3" text-anchor="middle">
+    <text x="450" y="368">PROJECT IMAGE</text>
+    <text x="450" y="396" fill="#6b7062">1800 × 1240 PX</text>
+  </g>
+</svg>

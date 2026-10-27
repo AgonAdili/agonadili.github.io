@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
-    "check": "node --check dist/main.js && node --check dist/intro.js && node --check dist/dot-field.js && node --check server.mjs && node --check tests/smoke.mjs",
+    "check": "node --check dist/main.js && node --check dist/intro.js && node --check dist/dot-field.js && node --check dist/work.js && node --check dist/projects.js && node --check server.mjs && node --check tests/smoke.mjs",
     "test": "node tests/smoke.mjs"
   },
   "devDependencies": {

@@ -2,7 +2,7 @@ const STORAGE_KEY = 'aa-intro-v2-seen';
 const DURATION = 3450;
 const EXIT_AT = 2650;
 
-export function initIntro({ motionPreference, onReveal = () => {}, onReducedReplay = () => {} }) {
+export function initIntro({ motionPreference, onReveal = () => {} }) {
   const root = document.documentElement;
   const overlay = document.querySelector('.intro');
   const skip = overlay.querySelector('.intro-skip');
@@ -30,10 +30,7 @@ export function initIntro({ motionPreference, onReveal = () => {}, onReducedRepl
     if (scrollX !== snapshot.x || scrollY !== snapshot.y) {
       window.scrollTo({ left: snapshot.x, top: snapshot.y, behavior: 'instant' });
     }
-    const returnTo = snapshot.focus;
-    if (returnTo?.isConnected && returnTo !== document.body && !overlay.contains(returnTo)) {
-      returnTo.focus({ preventScroll: true });
-    } else if (reason === 'keyboard') {
+    if (reason === 'keyboard') {
       document.querySelector('.skip-link').focus({ preventScroll: true });
     } else if (overlay.contains(document.activeElement)) {
       document.activeElement.blur();
@@ -42,27 +39,18 @@ export function initIntro({ motionPreference, onReveal = () => {}, onReducedRepl
     snapshot = null;
   }
 
-  function play({ replay = false } = {}) {
+  function play() {
     if (motionPreference.matches) {
       finish('preference');
-      if (replay) onReducedReplay();
       return;
     }
-    if (running) finish('restart');
     snapshot = {
-      focus: document.activeElement,
       overflow: document.body.style.overflow,
       paddingRight: document.body.style.paddingRight,
       x: scrollX,
       y: scrollY,
       inert: page.map(element => [element, element.inert])
     };
-    root.classList.remove('intro-pending', 'intro-playing', 'intro-exiting');
-    overlay.dataset.phase = 'assemble';
-    overlay.style.setProperty('--intro-progress', '0');
-    counter.textContent = '00';
-    label.textContent = 'FORMING IDEAS';
-    void overlay.offsetWidth;
     const scrollbar = innerWidth - root.clientWidth;
     if (scrollbar > 0) {
       document.body.style.paddingRight = `${parseFloat(getComputedStyle(document.body).paddingRight) + scrollbar}px`;
@@ -72,6 +60,7 @@ export function initIntro({ motionPreference, onReveal = () => {}, onReducedRepl
     overlay.inert = false;
     overlay.setAttribute('aria-hidden', 'false');
     running = true;
+    root.classList.remove('intro-pending');
     root.classList.add('intro-playing');
     // Focus the dialog itself: screen readers enter it, and no focus ring appears on Skip.
     overlay.focus({ preventScroll: true });
@@ -108,5 +97,5 @@ export function initIntro({ motionPreference, onReveal = () => {}, onReducedRepl
     finish('keyboard');
   });
   if (root.classList.contains('intro-pending')) play();
-  return { play, finish };
+  return { finish };
 }
