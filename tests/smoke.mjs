@@ -73,10 +73,10 @@ try {
   // A project dialog opens, closes with Escape and returns focus to its card.
   {
     const { context, page } = await open({ width: 1440, height: 900 });
-    await page.click('[data-project="orbit"]');
+    await page.click('[data-project="eacore"]');
     check(await page.evaluate(() => document.querySelector('dialog').open), 'the project dialog does not open');
     await page.keyboard.press('Escape');
-    check(await page.evaluate(() => !document.querySelector('dialog').open && document.activeElement.dataset.project === 'orbit'), 'the project dialog does not close or return focus');
+    check(await page.evaluate(() => !document.querySelector('dialog').open && document.activeElement.dataset.project === 'eacore'), 'the project dialog does not close or return focus');
     const row = page.locator('.project-row').first();
     const rowName = await row.locator('.project-row-name').textContent();
     await row.click();
@@ -90,9 +90,9 @@ try {
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', (error) => errors.push(error.message));
-    await page.goto(`${url}#work/forma`);
+    await page.goto(`${url}#work/avtoprime`);
     const state = await page.evaluate(() => ({ open: document.querySelector('dialog').open, title: document.querySelector('#dialog-title').textContent, intro: document.documentElement.classList.contains('intro-playing') }));
-    check(state.open && state.title === 'Forma' && !state.intro, `a project link does not open its project: ${JSON.stringify(state)}`);
+    check(state.open && state.title === 'AvtoPrime' && !state.intro, `a project link does not open its project: ${JSON.stringify(state)}`);
     check(!errors.length, `project link: ${errors.join('; ')}`);
     await context.close();
   }

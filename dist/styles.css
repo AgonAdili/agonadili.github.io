@@ -718,20 +718,21 @@ html:not(.js) #dot-field::before {
   transform: scale(1.04);
 }
 
+/* Nearly opaque, so the badge stays legible over whatever part of a screenshot it covers. */
 .project-badge {
   position: absolute;
   top: 20px;
   left: 20px;
   color: #2a3225;
   z-index: 2;
-  background: #f8f9eeab;
+  background: #f8f9eee6;
   padding: 5px 9px;
   border-radius: 2px;
 }
 
 .project-card.is-dark .project-badge {
   color: #dbe4d2;
-  background: #ffffff12;
+  background: #1d1f1ad9;
 }
 
 .project-open {
