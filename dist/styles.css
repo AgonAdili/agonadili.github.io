@@ -453,47 +453,6 @@ html:not(.js) #dot-field::before {
   font-size: 16px;
 }
 
-.discipline-strip {
-  background: var(--lime);
-  color: var(--bg);
-  overflow: hidden;
-  padding: 21px 0;
-}
-
-.discipline-track {
-  --marquee-gap: 45px;
-  display: flex;
-  align-items: center;
-  gap: var(--marquee-gap);
-  /* The trailing gap makes each half exactly one loop long, so the -50% loop has no jump. */
-  padding-right: var(--marquee-gap);
-  white-space: nowrap;
-  width: max-content;
-  animation: marquee 40s linear infinite;
-}
-
-.discipline-track>span {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .01em;
-}
-
-.discipline-track>i {
-  font-size: 23px;
-  line-height: 1;
-  font-style: normal;
-}
-
-.discipline-strip:hover .discipline-track {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .section-pad {
   padding: 95px var(--pad);
   max-width: 1800px;
@@ -1632,18 +1591,6 @@ html:not(.js) #dot-field::before {
     width: 25px;
     height: 32px;
     font-size: 14px;
-  }
-  .discipline-strip {
-    padding: 17px 0;
-  }
-  .discipline-track {
-    --marquee-gap: 25px;
-  }
-  .discipline-track>span {
-    font-size: 10px;
-  }
-  .discipline-track>i {
-    font-size: 18px;
   }
   .section-pad {
     padding: 65px var(--pad);
